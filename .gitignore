@@ -1,0 +1,6 @@
+.DS_Store
+.vagrant/
+*.retry
+**/__pycache__/
+**/*.tar.gz
+**/*.tgz

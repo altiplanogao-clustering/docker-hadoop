@@ -1,0 +1,107 @@
+version: "3"
+services:
+  namenode:
+    image: andy/hadoop-namenode:latest
+    hostname: namenode-a
+    container_name: namenode-a
+    command: /docker-hadoop-namenode/run.sh -d
+    ports:
+      - "50070:50070"
+      - "9000:9000"
+    environment:
+      - CLUSTER_NAME=localcluster
+    networks:
+      - hadoop-net
+  datanode:
+    image: andy/hadoop-datanode:latest
+    depends_on:
+      - namenode
+    hostname: datanode-a
+    container_name: datanode-a
+    command: /docker-hadoop-datanode/run.sh -d
+    ports:
+      - "50075:50075"
+      - "50010:50010"
+      - "50020:50020"
+    environment:
+      - HADOOP_CONF_DATA="core:fs.defaultFS=hdfs://namenode-a:9000"
+    networks:
+      - hadoop-net
+  datanode2:
+    image: andy/hadoop-datanode:latest
+    depends_on:
+      - namenode
+    hostname: datanode-b
+    container_name: datanode-b
+    command: /docker-hadoop-datanode/run.sh -d
+    ports:
+      - "50076:50075"
+      - "50011:50010"
+      - "50021:50020"
+    environment:
+      - HADOOP_CONF_DATA="core:fs.defaultFS=hdfs://namenode-a:9000"
+    networks:
+      - hadoop-net
+  resourcemanager:
+    image: andy/hadoop-resourcemanager:latest
+    hostname: resourcemanager-a
+    container_name: resourcemanager-a
+    command: /docker-hadoop-resourcemanager/run.sh -d
+    ports:
+      - "8088:8088"
+    environment:
+      - HADOOP_CONF_DATA="core:fs.defaultFS=hdfs://namenode-a:9000"
+    networks:
+      - hadoop-net
+  nodemanager:
+    image: andy/hadoop-nodemanager:latest
+    hostname: nodemanager-a
+    container_name: nodemanager-a
+    command: /docker-hadoop-nodemanager/run.sh -d
+    ports:
+      - "8042:8042"
+    environment:
+      HADOOP_CONF_DATA: >
+              core:fs.defaultFS=hdfs://namenode-a:9000
+              yarn:yarn.resourcemanager.hostname=resourcemanager-a
+    networks:
+      - hadoop-net
+  historyserver:
+    image: andy/hadoop-historyserver:latest
+    hostname: historyserver-a
+    container_name: historyserver-a
+    command: /docker-hadoop-historyserver/run.sh -d
+    ports:
+      - "19888:19888"
+    environment:
+      HADOOP_CONF_DATA: >
+              core:fs.defaultFS=hdfs://namenode-a:9000
+              yarn:yarn.resourcemanager.hostname=resourcemanager-a
+    networks:
+      - hadoop-net
+  mapred:
+    image: andy/hadoop-mapred:latest
+    hostname: mapred-a
+    container_name: mapred-a
+    command: /docker-hadoop-mapred/run.sh -d
+    environment:
+      HADOOP_CONF_DATA: >
+              core:fs.defaultFS=hdfs://namenode-a:9000
+              yarn:yarn.resourcemanager.hostname=resourcemanager-a
+    networks:
+      - hadoop-net
+  # spark:
+  #   image: andy/spark:latest
+  #   hostname: spark-a
+  #   container_name: spark-a
+  #   command: /docker-spark/run.sh -d
+  #   environment:
+  #     HADOOP_CONF_DATA: >
+  #             core:fs.defaultFS=hdfs://namenode-a:9000
+  #             yarn:yarn.resourcemanager.hostname=resourcemanager-a
+  #   networks:
+  #     - hadoop-net
+
+
+networks:
+  hadoop-net:
