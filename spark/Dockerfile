@@ -14,6 +14,7 @@ RUN chmod +x ${docker_dir}/**/*.sh && \
 ENV SPARK_HOME=${install_path} \
 	SPARK_CONF_DIR=${spark_conf_dir} \
 	SPARK_LOG_DIR=${spark_log_dir} \
+	SPARK_PROPERTY_CONF_DATA="spark.eventLog.enabled=true" \
 	PATH=${install_path}/bin:$PATH
 
 ENV EXTRA_SETUP_SCRIPTS_PLACEHOLDER="${docker_dir}/setup/update_spark_runtime_env.sh"
