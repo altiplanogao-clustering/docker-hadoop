@@ -91,17 +91,17 @@ services:
               yarn:yarn.resourcemanager.hostname=resourcemanager-a
     networks:
       - hadoop-net
-  # spark:
-  #   image: andy/spark:latest
-  #   hostname: spark-a
-  #   container_name: spark-a
-  #   command: /docker-spark/run.sh -d
-  #   environment:
-  #     HADOOP_CONF_DATA: >
-  #             core:fs.defaultFS=hdfs://namenode-a:9000
-  #             yarn:yarn.resourcemanager.hostname=resourcemanager-a
-  #   networks:
-  #     - hadoop-net
+  spark:
+    image: andy/spark-on-yarn:latest
+    hostname: spark-a
+    container_name: spark-a
+    command: /docker-spark-on-yarn/run.sh -d
+    environment:
+      HADOOP_CONF_DATA: >
+              core:fs.defaultFS=hdfs://namenode-a:9000
+              yarn:yarn.resourcemanager.hostname=resourcemanager-a
+    networks:
+      - hadoop-net
 
 
 networks:

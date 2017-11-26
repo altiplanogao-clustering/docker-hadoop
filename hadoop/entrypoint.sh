@@ -17,6 +17,8 @@ set_properties $HADOOP_CONF_DATA_PREDEF
 set_properties_files "$HADOOP_CONF_DATA_FILES"
 set_properties "$HADOOP_CONF_DATA"
 
+${this_dir}/setup/run_extra_setup.sh
+
 echo Run CMD: $@
 exec $@
 

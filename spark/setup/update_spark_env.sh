@@ -15,4 +15,3 @@ do
 	echo "${exp}SPARK_LOG_DIR=${spark_log_dir}" >> ${env_file}
 done
 
-

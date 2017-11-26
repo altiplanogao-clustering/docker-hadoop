@@ -16,6 +16,8 @@ ENV SPARK_HOME=${install_path} \
 	SPARK_LOG_DIR=${spark_log_dir} \
 	PATH=${install_path}/bin:$PATH
 
+ENV EXTRA_SETUP_SCRIPTS_PLACEHOLDER="${docker_dir}/setup/update_spark_runtime_env.sh"
+
 ## DOWNLOAD SPARK BINARY and EXTRACT
 RUN /bin/sh -c "${docker_dir}/setup/extract_spark.sh" && \
 	/bin/sh -c "${docker_dir}/setup/update_spark_env.sh" && \

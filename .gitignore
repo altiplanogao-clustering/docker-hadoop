@@ -5,3 +5,4 @@
 **/*.tar.gz
 **/*.tar.gz.asc
 **/*.tgz
+spark/res/spark-*
