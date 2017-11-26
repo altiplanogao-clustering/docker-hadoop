@@ -40,6 +40,7 @@ RUN /bin/sh -c "/docker-hadoop/setup/extract_hadoop.sh" && \
 ENV HADOOP_CONF_DATA_PREDEF="" \
 	HADOOP_CONF_DATA_PREDEF_FILES="" \
 	HADOOP_CONF_DATA="" \
-	HADOOP_CONF_DATA_FILES="" 
+	HADOOP_CONF_DATA_FILES="" \
+	ADDITIONAL_USERS=""
 
 ENTRYPOINT ["/docker-hadoop/entrypoint.sh"]

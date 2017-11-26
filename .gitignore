@@ -3,4 +3,5 @@
 *.retry
 **/__pycache__/
 **/*.tar.gz
+**/*.tar.gz.asc
 **/*.tgz

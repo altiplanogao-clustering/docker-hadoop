@@ -22,8 +22,8 @@ function set_properties(){
 		((sub_len=$conf_str_len-2))
 		conf_str=${conf_str:1:$sub_len}
 	fi
-	echo "Processing configuration string: [$conf_str]"
 	if [ -n "$conf_str" ] ; then
+		echo "Processing configuration string: [$conf_str]"
 		for conf_item in ${conf_str[*]}
 		do
 			set_property $conf_item

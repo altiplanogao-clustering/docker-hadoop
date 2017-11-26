@@ -14,7 +14,7 @@ fi
 docker stop  ${container_name}
 docker rm -v ${container_name}
 #docker run --rm -d --name ${container_name} andy/hadoop:latest
-docker run --rm -it --hostname ${container_name} --name ${container_name} $image_name /bin/bash
+docker run --rm -it -e ADDITIONAL_USERS="aaa(3001):bbb(4002):spark" --hostname ${container_name} --name ${container_name} $image_name /bin/bash
 
 
 

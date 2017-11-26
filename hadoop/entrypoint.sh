@@ -2,9 +2,12 @@
 this_dir=`dirname $0`
 
 source ${this_dir}/set_properties.sh
+source ${this_dir}/create_users.sh
 
 echo "Start ssh service"
 sudo service ssh start
+
+create_users "$ADDITIONAL_USERS"
 
 echo "Set Hadoop properties "
 # set_property "core:hadoop.tmp.dir=/tmp/hadoop_tmp/"
