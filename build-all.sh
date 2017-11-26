@@ -13,8 +13,8 @@ do
   	build_sh=${this_dir}/${m}/dev/build.sh
    	echo "...: $build_sh"
     if [ -f "$build_sh" ]; then
-    	echo "Will run: $build_sh"
-    	/bin/sh -c $build_sh
+    	echo "Will run: $build_sh $@"
+    	/bin/sh -c "$build_sh $@"
     fi
   fi
 done

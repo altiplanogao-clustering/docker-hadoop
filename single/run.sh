@@ -3,6 +3,10 @@ this_dir=`dirname $0`
 
 single_user=false
 
+source /docker-hadoop/set_properties.sh
+export NAMENODE_HOSTNAME=${NAMENODE_HOSTNAME:-`hostname -f`}
+set_property "core:fs.defaultFS=hdfs://${NAMENODE_HOSTNAME}:9000"
+
 sudo chmod +x ${this_dir}/**/*.sh
 sudo chown -R hadoop:hadoop /var/hadoop/log
 sudo chmod 0775 /var/hadoop/log

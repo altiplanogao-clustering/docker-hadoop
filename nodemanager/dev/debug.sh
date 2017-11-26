@@ -16,4 +16,4 @@ docker rm -v ${container_name}
 #docker run --rm -d --name ${container_name} andy/hadoop:latest
 # docker run --rm -it -P --hostname ${container_name} --name ${container_name} $image_name /run.sh -bash
 
-docker run --rm -it --net=docker_hadoop-net -p 8042:8042 -P -e HADOOP_CONF_DATA="yarn:yarn.resourcemanager.hostname=resourcemanager-a" --hostname nodemanager-debugging --name nodemanager-debugging andy/hadoop-nodemanager:latest /docker-hadoop-nodemanager/run.sh -bash
+docker run --rm -it --net=dockerhadoop_hadoop-net -p 8042:8042 -P -e HADOOP_CONF_DATA="yarn:yarn.resourcemanager.hostname=resourcemanager-a" --hostname nodemanager-debugging --name nodemanager-debugging andy/hadoop-nodemanager:latest /docker-hadoop-nodemanager/run.sh -bash

@@ -16,4 +16,4 @@ docker rm -v ${container_name}
 #docker run --rm -d --name ${container_name} andy/hadoop:latest
 # docker run --rm -it -P --hostname ${container_name} --name ${container_name} $image_name /run.sh -bash
 
-docker run --rm -it --net=docker_hadoop-net -P -e HADOOP_CONF_DATA="core:fs.defaultFS=hdfs://namenode1-a:9000 yarn:yarn.resourcemanager.hostname=resourcemanager-a" --hostname mapred-debugging-a --name mapred-debugging-a andy/hadoop-mapred:latest /docker-hadoop-mapred/run.sh -bash
+docker run --rm -it --net=dockerhadoop_hadoop-net -P -e HADOOP_CONF_DATA="core:fs.defaultFS=hdfs://namenode1-a:9000 yarn:yarn.resourcemanager.hostname=resourcemanager-a" --hostname mapred-debugging-a --name mapred-debugging-a andy/hadoop-mapred:latest /docker-hadoop-mapred/run.sh -bash

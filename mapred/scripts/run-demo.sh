@@ -16,6 +16,7 @@ echo "=== dfs -rm /user                ================"
 $HADOOP_PREFIX/bin/hdfs dfs -rm -f -r  /user
 echo "=== dfs -mkdir /user             ================"
 $HADOOP_PREFIX/bin/hdfs dfs -mkdir /user
+$HADOOP_PREFIX/bin/hdfs dfs -chmod 0775 /user
 echo "=== dfs -mkdir /user/xxx         ================"
 $HADOOP_PREFIX/bin/hdfs dfs -mkdir /user/${hadoop_user}
 echo "=== dfs -put HADOOP_PREFIX/etc/hadoop input   ==="

@@ -1,0 +1,36 @@
+version: "3"
+services:
+  single:
+    image: andy/hadoop-single:latest
+    hostname: single-a
+    container_name: single-a
+    command: /docker-hadoop-single/run.sh -d
+    ports:
+      - "50070:50070"
+      - "9000:9000"
+      - "50075:50075"
+      - "50010:50010"
+      - "50020:50020"
+
+      - "8088:8088"
+      - "8042:8042"
+      - "19888:19888"
+    environment:
+      - CLUSTER_NAME=localcluster
+    networks:
+      - hadoop-single-net
+  # spark:
+  #   image: andy/spark:latest
+  #   hostname: spark-a
+  #   container_name: spark-a
+  #   command: /docker-spark/run.sh -d
+  #   environment:
+  #     HADOOP_CONF_DATA: >
+  #             core:fs.defaultFS=hdfs://namenode-a:9000
+  #             yarn:yarn.resourcemanager.hostname=resourcemanager-a
+  #   networks:
+  #     - hadoop-single-net
+
+
+networks:
+  hadoop-single-net:

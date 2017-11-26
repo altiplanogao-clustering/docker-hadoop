@@ -1,8 +1,6 @@
 FROM andy/hadoop:2.8.2
 
 ENV SPARK_VERSION 2.2.0
-# https://www.apache.org/dyn/closer.lua/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz
-# https://www.apache.org/dyn/closer.lua/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz
 ARG docker_dir=/docker-spark
 
 ARG install_path=/usr/lib/spark
@@ -15,12 +13,15 @@ RUN chmod +x ${docker_dir}/**/*.sh && \
 
 ENV SPARK_HOME=${install_path} \
 	SPARK_CONF_DIR=${spark_conf_dir} \
-	SPARK_LOG_DIR=${spark_log_dir}
+	SPARK_LOG_DIR=${spark_log_dir} \
+	PATH=${install_path}/bin:$PATH
 
-## DOWNLOAD HADOOP BINARY and EXTRACT
+## DOWNLOAD SPARK BINARY and EXTRACT
 RUN /bin/sh -c "${docker_dir}/setup/extract_spark.sh" && \
 	/bin/sh -c "${docker_dir}/setup/update_spark_env.sh" && \
 	/bin/sh -c "${docker_dir}/setup/setup_spark.sh"
+
+EXPOSE 4040
 
 # #USER CONFIG DATA PLACEHOLDER
 # ENV HADOOP_CONF_DATA_PREDEF="" \

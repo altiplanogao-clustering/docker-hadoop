@@ -1,7 +1,7 @@
 #!/bin/bash
 
 this_dir=`dirname $0`
-image_name="andy/hadoop-nodemanager"
+image_name="andy/spark"
 
 if [[ $1 == "clean" ]]; then
   docker image rm $image_name:latest $image_name:2.8.2

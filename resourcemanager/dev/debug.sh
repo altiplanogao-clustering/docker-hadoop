@@ -16,4 +16,4 @@ docker rm -v ${container_name}
 #docker run --rm -d --name ${container_name} andy/hadoop:latest
 # docker run --rm -it -P --hostname ${container_name} --name ${container_name} $image_name /run.sh -bash
 
-docker run --rm -it  --net=docker_hadoop-net -p 8088:8088 -P -e HADOOP_CONF_DATA="core:fs.defaultFS=hdfs://namenode:9000" --hostname resourcemanager-debugging --name resourcemanager-debugging andy/hadoop-resourcemanager:latest /docker-hadoop-resourcemanager/run.sh -bash
+docker run --rm -it  --net=dockerhadoop_hadoop-net -p 8088:8088 -P -e HADOOP_CONF_DATA="core:fs.defaultFS=hdfs://namenode:9000" --hostname resourcemanager-debugging --name resourcemanager-debugging andy/hadoop-resourcemanager:latest /docker-hadoop-resourcemanager/run.sh -bash
