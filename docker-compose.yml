@@ -92,14 +92,31 @@ services:
     networks:
       - hadoop-net
   spark:
-    image: andy/spark-on-yarn:latest
+    image: andy/spark:latest
     hostname: spark-a
     container_name: spark-a
-    command: /docker-spark-on-yarn/run.sh -d
+    command: /docker-spark/run.sh -d
     environment:
       HADOOP_CONF_DATA: >
               core:fs.defaultFS=hdfs://namenode-a:9000
               yarn:yarn.resourcemanager.hostname=resourcemanager-a
+      SPARK_EVENTLOG_ENABLE: "true"
+      SPARK_RUN_DEMO: "true"
+    networks:
+      - hadoop-net
+  spark-hs:
+    image: andy/spark:latest
+    hostname: spark-historyserver
+    container_name: spark-historyserver
+    command: /docker-spark/run.sh -d
+    environment:
+      HADOOP_CONF_DATA: >
+              core:fs.defaultFS=hdfs://namenode-a:9000
+              yarn:yarn.resourcemanager.hostname=resourcemanager-a
+      SPARK_EVENTLOG_ENABLE: "true"
+      SPARK_RUN_HISTORYSERVER: "true"
+    ports:
+      - "18080:18080"
     networks:
       - hadoop-net
 

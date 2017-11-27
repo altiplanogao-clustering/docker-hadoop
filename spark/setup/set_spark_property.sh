@@ -1,18 +1,18 @@
 #!/bin/bash
 
-function set_property(){
+function set_spark_property(){
 	local prop=$1
 	kvp=(${prop//=/ })
 	name=${kvp[0]}
 	value=${kvp[1]}
 	conf_file=${SPARK_CONF_DIR}/spark-defaults.conf
 
-    echo "Setting SPARK property $name=$value"
-	sed -i 's|^$name.*$||g' ${conf_file}
+    echo "SETTING SPARK PROPERTY $name=$value"
+	sed -i 's|^'$name'.*$||g' ${conf_file}
     echo $name $value >> ${conf_file}
 }
 
-function set_properties(){
+function set_spark_properties(){
 	local conf_str=$1
 	local conf_str_len=${#conf_str}
 	local first_letter=${conf_str:0:1}
@@ -24,7 +24,7 @@ function set_properties(){
 		echo "Processing configuration string: [$conf_str]"
 		for conf_item in ${conf_str[*]}
 		do
-			set_property $conf_item
+			set_spark_property $conf_item
 		done
 	fi
 }
