@@ -27,6 +27,12 @@ The project contains hadoop modules in corresponding directories:
 ### Spark image:
 * spark
 
+## Build images
+Run command:
+```
+./build-all.sh
+```
+
 ## Hadoop Configuration:
 Set container's hadoop configuration by setting envirnment HADOOP_CONF_DATA
 
