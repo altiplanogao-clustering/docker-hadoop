@@ -32,7 +32,8 @@ Set container's hadoop configuration by setting envirnment HADOOP_CONF_DATA
 
 ## Example docker-compose.yml
 
-There is a docker-compose.yml file provided to run demo examples
+There is a docker-compose.yml file provided to run demo examples.
+
 Run with:
 ```
 docker-compose up
