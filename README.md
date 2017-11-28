@@ -43,8 +43,9 @@ docker-compose down
 ```
 
 Web ui
-| Node type           | url                    |
-| :------------------ |:-----------------------|
+
+| Node type           | URL                    |
+|---------------------|------------------------|
 | namenode:           | http://localhost:50070 |
 | datanode:           | http://localhost:50075 |
 | resourcemanager:    | http://localhost:8088  |
