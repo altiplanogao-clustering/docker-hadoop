@@ -27,12 +27,19 @@ The project contains hadoop modules in corresponding directories:
 ### Spark image:
 * spark
 
+## Build images
+Run command:
+```
+./build-all.sh
+```
+
 ## Hadoop Configuration:
 Set container's hadoop configuration by setting envirnment HADOOP_CONF_DATA
 
 ## Example docker-compose.yml
 
-There is a docker-compose.yml file provided to run demo examples
+There is a docker-compose.yml file provided to run demo examples.
+
 Run with:
 ```
 docker-compose up
@@ -43,8 +50,9 @@ docker-compose down
 ```
 
 Web ui
-| Node type           | url                    |
-| :------------------ |:-----------------------|
+
+| Node type           | URL                    |
+|---------------------|------------------------|
 | namenode:           | http://localhost:50070 |
 | datanode:           | http://localhost:50075 |
 | resourcemanager:    | http://localhost:8088  |
