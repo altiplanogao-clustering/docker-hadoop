@@ -2,8 +2,8 @@
 this_dir=`dirname $0`
 
 sudo chmod +x ${this_dir}/**/*.sh
-sudo chown -R yarn:hadoop /var/hadoop/log
-sudo chmod 0775 /var/hadoop/log
+sudo chown -R yarn:hadoop ${YARN_LOG_DIR}
+sudo chmod 0775 ${YARN_LOG_DIR}
 
 su - yarn   -l -c "${this_dir}/scripts/start-nodemanager.sh"
 

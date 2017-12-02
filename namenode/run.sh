@@ -6,8 +6,8 @@ export NAMENODE_HOSTNAME=${NAMENODE_HOSTNAME:-`hostname -f`}
 set_property "core:fs.defaultFS=hdfs://${NAMENODE_HOSTNAME}:9000"
 
 sudo chmod +x ${this_dir}/**/*.sh
-sudo chown -R hdfs:hadoop /var/hadoop/log
-sudo chmod 0775 /var/hadoop/log
+sudo chown -R hdfs:hadoop ${HADOOP_LOG_DIR}
+sudo chmod 0775 ${HADOOP_LOG_DIR}
 
 sudo chown -R hdfs:hadoop /hadoop/dfs/namenode
 sudo chmod 0775 /hadoop/dfs/namenode

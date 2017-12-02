@@ -4,8 +4,8 @@ this_dir=`dirname $0`
 mapred_user=mapred
 
 sudo chmod +x ${this_dir}/**/*.sh
-sudo chown -R ${mapred_user}:hadoop /var/hadoop/log
-sudo chmod 0775 /var/hadoop/log
+sudo chown -R ${mapred_user}:hadoop ${HADOOP_MAPRED_LOG_DIR}
+sudo chmod 0775 ${HADOOP_MAPRED_LOG_DIR}
 
 su - ${mapred_user} -l -c "${this_dir}/scripts/run-demo.sh ${mapred_user}"
 

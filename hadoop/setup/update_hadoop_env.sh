@@ -16,7 +16,9 @@ do
 	echo "${exp}HADOOP_HDFS_HOME=${install_path}" >> ${env_file}
 	echo "${exp}HADOOP_YARN_HOME=${install_path}" >> ${env_file}
 	echo "${exp}HADOOP_MAPRED_HOME=${install_path}" >> ${env_file}
+
 	echo "${exp}HADOOP_CONF_DIR=${hadoop_conf_dir}" >> ${env_file}
+	
 	echo "${exp}HADOOP_LOG_DIR=${hadoop_log_dir}" >> ${env_file}
 	echo "${exp}YARN_LOG_DIR=${hadoop_log_dir}" >> ${env_file}
 	echo "${exp}HADOOP_MAPRED_LOG_DIR=${hadoop_log_dir}" >> ${env_file}

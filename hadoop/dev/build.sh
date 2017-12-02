@@ -11,9 +11,11 @@ if [[ $1 == "clean" ]]; then
     case $answer in
      [yY]* ) 
         docker image rm $image_name:latest $image_name:2.8.2
-		break
-		;;
-     [nN]* ) continue;;
+		    break
+		    ;;
+     [nN]* )
+        break
+        ;;
      * )     echo "Dude, just enter Y or N, please. not $idx -$answer-";;
     esac
   done

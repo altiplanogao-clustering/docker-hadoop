@@ -2,7 +2,7 @@
 this_dir=`dirname $0`
 
 # Prepare Hadoop DIRs
-hadoop_dirs=(${hadoop_conf_dir} ${hadoop_log_dir} ${namenode_dir} ${datanode_dir})
+hadoop_dirs=(${hadoop_conf_dir} ${hadoop_var_dir} ${hadoop_log_dir} ${hadoop_yarn_log_dir} ${hadoop_mapred_log_dir} ${namenode_dir} ${datanode_dir})
 for hdp_dir in ${hadoop_dirs[*]}
 do
 	echo Process: ${hdp_dir}

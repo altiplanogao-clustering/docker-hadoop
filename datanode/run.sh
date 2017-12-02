@@ -2,8 +2,8 @@
 this_dir=`dirname $0`
 
 sudo chmod +x ${this_dir}/**/*.sh
-sudo chown -R hdfs:hadoop /var/hadoop/log
-sudo chmod 0775 /var/hadoop/log
+sudo chown -R hdfs:hadoop ${HADOOP_LOG_DIR}
+sudo chmod 0775 ${HADOOP_LOG_DIR}
 
 sudo chown -R hdfs:hadoop /hadoop/dfs/datanode
 sudo chmod 0775 /hadoop/dfs/datanode

@@ -7,6 +7,13 @@ source ${this_dir}/create_users.sh
 echo "Start ssh service"
 sudo service ssh start
 
+hadoop_var_dirs=( `dirname $HADOOP_LOG_DIR` $HADOOP_LOG_DIR )
+for hvd in ${hadoop_var_dirs[*]}
+do
+	chown hadoop:hadoop ${hvd}
+	chmod 0775 ${hvd}
+done
+
 create_users "$ADDITIONAL_USERS"
 
 echo "Set Hadoop properties "
