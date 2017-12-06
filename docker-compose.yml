@@ -11,6 +11,8 @@ services:
     environment:
       - CLUSTER_NAME=localcluster
       - ADDITIONAL_USERS=spark
+    volumes:
+      - ./data/namenode-a:/hadoop/dfs/namenode
     networks:
       - hadoop-net
   datanode:
@@ -26,6 +28,8 @@ services:
       - "50020:50020"
     environment:
       - HADOOP_CONF_DATA="core:fs.defaultFS=hdfs://namenode-a:9000"
+    volumes:
+      - ./data/datanode-a:/hadoop/dfs/datanode
     networks:
       - hadoop-net
   datanode2:
@@ -41,6 +45,8 @@ services:
       - "50021:50020"
     environment:
       - HADOOP_CONF_DATA="core:fs.defaultFS=hdfs://namenode-a:9000"
+    volumes:
+      - ./data/datanode-b:/hadoop/dfs/datanode
     networks:
       - hadoop-net
   resourcemanager:
@@ -102,6 +108,10 @@ services:
               yarn:yarn.resourcemanager.hostname=resourcemanager-a
       SPARK_EVENTLOG_ENABLE: "true"
       SPARK_RUN_DEMO: "true"
+    ports:
+      - "4040:4040"
+    volumes:
+      - ./data/shared:/shared
     networks:
       - hadoop-net
   spark-hs:

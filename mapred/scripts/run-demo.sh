@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hadoop_user=$1
+hadoop_user=`id -u -n`
 # NameNode - http://localhost:50070/
 # ResourceManager - http://localhost:8088/
 echo "================================================="
